@@ -31,7 +31,7 @@ body{
 
 .hero{
     width: 80%;
-    padding: 3.5em 0; /* TODO: REVISAR PADDING Y MARGIN, buscar la manera de hacerlo responsive y consistente */
+    padding-top: 3.5em; /* TODO: REVISAR PADDING Y MARGIN, buscar la manera de hacerlo responsive y consistente */
     margin: 0 auto;
     text-align: center;
     line-height: 140%;
@@ -58,11 +58,16 @@ body{
 }
 
 .card-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas: 
+        "supervisor team-builder calculator"
+        "supervisor karma calculator";
     gap: var(--spacing-400);
     padding: var(--spacing-400);
+    justify-items: center;
+    align-items: center;
 }
 
 .card{
@@ -78,7 +83,7 @@ body{
     flex-direction: column;
     justify-content: space-between;
     gap: var(--spacing-400);
-    flex: 1 1 calc((25% - var(--spacing-400)));
+    
 }
 
 .card h3{
@@ -102,26 +107,69 @@ body{
     align-self: flex-end;
 }
 
-.card:nth-of-type(1){
+.supervisor{
     border-color: var(--cyan);
+    grid-area: supervisor;
+    justify-self: end;
 }
 
-.card:nth-of-type(2){
+.team-builder{
     border-color: var(--red);
+    grid-area: team-builder;
+    justify-self: center;
 }
 
-.card:nth-of-type(3){
+.karma{
     border-color: var(--orange);
+    grid-area: karma;
+    justify-self: center;
 }
 
-.card:nth-of-type(4){
+.calculator{
     border-color: var(--blue);
+    grid-area: calculator;
+    justify-self: start;
 }
 
 footer{
     display: none;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 1080px) {
+    .card-container{
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas: 
+            "supervisor supervisor"
+            "team-builder karma"
+            "calculator calculator";
+        gap: var(--spacing-400);
+        justify-content: center;
+        padding: var(--spacing-400);
+    }
+
+    .supervisor{
+        justify-self: center;
+    }
+    .calculator{
+        justify-self: center;
+    }
     
+}
+
+@media (max-width: 767px) {
+    .card-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: none;
+        gap: var(--spacing-400);
+        justify-content: center;
+        padding: var(--spacing-400);
+    }
+
+    .supervisor, .team-builder, .karma, .calculator{
+        grid-area: initial
+    }
 }
