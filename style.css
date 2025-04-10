@@ -4,7 +4,7 @@
     /* Color Variables */
     --grey-500: #4D4F62;
     --grey-400: #6A7178;
-    --white: #FFF;
+    --white: #FAFAFA;
     --red: #EA5454;
     --cyan: #44D3D2;
     --blue: #549EF2;
@@ -27,19 +27,13 @@ body{
     margin:0;
     font-family: "Poppins", sans-serif;
     color: var(--grey-500);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-
-}
-
-header, main{
-    flex: 1;
+    background-color: var(--white);
 }
 
 .hero{
     width: 80%;
-    padding-top: 3.5em; /* TODO: REVISAR PADDING Y MARGIN, buscar la manera de hacerlo responsive y consistente */
+    padding-top: 3.625rem;
+    padding-bottom: 5.375rem;
     margin: 0 auto;
     text-align: center;
     line-height: 140%;
@@ -144,6 +138,7 @@ header, main{
 }
 
 footer{
+    display: none;
     width: 100%;
     margin: 0 auto;
     text-align: center;
